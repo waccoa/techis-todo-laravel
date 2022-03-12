@@ -23,10 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191); /// 追加
-    }
-     //public function boot()
-   // {
         //
-   // }
+        if (\App::environment(['production']) || \App::environment(['develop'])){
+            \URL::forceScheme('https');
+        }
+    }
 }
